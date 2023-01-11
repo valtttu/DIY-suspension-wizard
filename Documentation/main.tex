@@ -1,20 +1,18 @@
-\documentclass[a4paper,11pt]{article} % Määritellään luotavan dokumentin tyyppi
+\documentclass[a4paper,11pt]{article} 
 
 \usepackage{float}
-\usepackage{amsmath}        	% Matematiikkapaketti
+\usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[utf8]{inputenc} 	% UTF-8 merkistö 
-\usepackage{lmodern,textcomp}   % Euron merkki ja muuta kivaa
-\usepackage[T1]{fontenc}    	% Tuki ääkkösille
-\usepackage{parskip}        	% Rivinvaihto kappaleiden väliin, ei sisennystä
-\usepackage{graphicx}       	% Grafiikkapaketti kuvien lisäämiseen
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,textcomp}   
+\usepackage[T1]{fontenc}    	
+\usepackage{parskip}        	
+\usepackage{graphicx}       	
 \usepackage{subfigure}
 \usepackage{blindtext}
 \usepackage{longtable}
-\usepackage{epstopdf}       	% Mahdollisuus lisätä *.eps tyyppisiä kuvia
-\usepackage[english]{babel}	    % Nimeää kuvat, taulukot jne. suomeksi
-                                % (muutoin ne nimettäisiin figure 1,
-                                % table 1 jne.)
+\usepackage{epstopdf}       	
+\usepackage[english]{babel}	    
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -24,10 +22,10 @@
 }
 \title{DIY suspension wizard - mountain bike suspension data logger}
 \author{Author: Valtteri Turkki}
-\date{ \today\ (Original doc: 4 April, 2021) }
+\date{ \today\ (Original doc: April 4, 2021) }
 
 
-\begin{document}                % Aloittaa dokumentin
+\begin{document}
 
 \maketitle
 
@@ -335,10 +333,10 @@ Figure \ref{fig:menu_screen} illustrates the layout of the device menu: The stat
 
 \subsection{Specs of the device as a table}
 
-\begin{table}[H]
+
+\begin{longtable}{ |p{0.3\linewidth} | p{0.5\linewidth}|} 
     \caption{The important specifications of the device.}
-    \centering
-    \begin{tabular}{ |p{0.3\linewidth} | p{0.5\linewidth}|} 
+    \label{tab:specs}\\
      \hline
      Property & Value \\ 
      \hline
@@ -346,6 +344,8 @@ Figure \ref{fig:menu_screen} illustrates the layout of the device menu: The stat
      Measured variables & Front damper position, rear damper position, frame acceleration, braking, location, speed, elevation, elapsed time\\
      \hline
      Additional features & Sag measuring, quick data review with BLE*, automatic rear sensor detection, gpx track segment based recording, *Proper phone app still missing, but values can be read \\
+     \hline
+     \newpage
      \hline
      Linear sensor range & 0-300 mm\\
      \hline
@@ -371,9 +371,8 @@ Figure \ref{fig:menu_screen} illustrates the layout of the device menu: The stat
      \hline
      Final budget & $\approx$ 200€\\     
      \hline
-    \end{tabular}
-    \label{tab:specs}
-\end{table}
+\end{longtable}
+    
 
 \subsection{Conclusions}
 
@@ -447,7 +446,7 @@ All the parts were printed with PrusaSlicer default settings for Prusa Mini in P
 
 \begin{longtable}{ |p{0.35\linewidth} | p{0.3\linewidth}| p{0.25\linewidth}| p{0.15\linewidth}|} 
     \caption{Notes for 3D printing the parts for the project.}
-    \label{tab:printing}
+    \label{tab:printing}\\
      \hline
      Model & Orientation & Pause prints & Supports \\ 
      \hline
@@ -473,6 +472,7 @@ All the parts were printed with PrusaSlicer default settings for Prusa Mini in P
      enclosure\_main\_part &	horizontal &	5, insert M3 nuts (3 x square, 8 x hex) &	- \\
      \hline
      \newpage
+     \hline
      enclosure\_sensor\_cap &	text side to build plate &	0 &	-\\
      \hline
      enclosure\_triangle\_ adapter &	bolt holes horizontally &	0 &	-\\
