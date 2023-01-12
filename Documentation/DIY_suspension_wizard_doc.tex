@@ -37,6 +37,7 @@
 
 \newpage
 \section{Introduction and motivation}
+\label{sec:introduction}
 \rule{12.7cm}{0.4pt}
 
 Mountain bikes have been developed greatly during the last ten years and one of the most aggressively developed bike type has been trail bikes. These are usually full suspension mountain bikes that have suspension travel ranging from 120 to 160 mm and the bikes are designed for going both uphill and downhill easily. This means that the suspension of these bikes is quite complex as it has to be firm under pedalling and still offer blush and controlled ride when going downhill. So, the frame linkage design and also the dampers themselves are quite advanced products. These modern dampers feature a lot of adjustment possibilities without needing to dive into the internal shim stacks. Such adjustments include compression and rebound damping which might even be divided into separate high and low speed adjustments.
@@ -48,6 +49,7 @@ There have been a few companies that have tried to answer this problem: Motion I
 
 \newpage
 \section{Project plan}
+\label{sec:plan}
 \rule{12.7cm}{0.4pt}
 
 The plan is to create a device that records data from the suspension of a mountain bike and then presents the data in a form that allows the rider to judge whether the adjustments made were good or not. This way the mountain biker should be able to find the correct suspension tune faster, which means that there would be more time for riding the bike. The data recorded from the suspension and the bike will be the linear position of the damper shafts, acceleration of the frame, braking points (brakes on or off) and GPS data. These will be logged to a memory card as a .csv file that is easy to analyze afterwards in Excel or Matlab.  In addition the device might have a wireless connection that allows quick access to the recorded data. Figure \ref{fig:plan_diagram} shows the connections between different components of the device.
@@ -78,6 +80,7 @@ The three stages are following: Stage one is to fulfill the first three requirem
 
 \newpage
 \section{Components for the project}
+\label{sec:components}
 \rule{12.7cm}{0.4pt}
 
 As the device needs to be small and portable, the components were selected so that the are power efficient and fit in a small enclosure. The component list is shown in table \ref{tab:components} below.
@@ -126,6 +129,7 @@ The microcontroller unit for the project was chosen to be Arduino nano 33 BLE. T
 
 \newpage
 \section{Project progress}
+\label{sec:progress}
 \rule{12.7cm}{0.4pt}
 
 The project began with ordering the components and designing the mechanical parts. The components arrived on the second week of February and as they arrived they were tested to work individually. This already brought the first problems as the Arduino\_MKRGPS library is not compatible with the Mbed architecture of the Nano 33 BLE, so after trying different libraries the TinyGPS++ library by Mikal Hart proved to be working quite well. Second library problem was found when testing the on board IMU, as it has range of ±16g, but the Arduino\_LSM9DS1 library does not allow you to change that from the default range of ±4g. Fortunately there was a version 2.0 from that library in github written by Femme Verbeek. This version not only allowed changing the measuring range, but also calibrating, filtering and changing the sample rate of the IMU.
@@ -223,9 +227,11 @@ Figures \ref{fig:all_parts} (a) \& (b) below show all parts of the device: Figur
 
 \newpage
 \section{The result}
+\label{sec:result}
 \rule{12.7cm}{0.4pt}
 
 \subsection{Description of the device and its uses}
+\label{sec:res_desc}
 
 The meaning of the project was to make a cheap mountain bike suspension data logging system that could be used by average mountain bikers. The idea is that this way the mystery of good suspension setup could be examined and studied by more people than the world cup racers who have access to measuring devices that cost 10 times the budget of this project. One could think that this kind of device is only useful for racing purposes, where being faster is the only goal. This isn't the case though, as a rider can also use this device to learn about one's riding style and suspension usage and this way obtain a better suspension setup (or conclude that current one is perfect). This matters a lot as the riding experience can be totally different when the bike is working properly, as the riding will feel easier and offer more fun. Potentially even beginners who have problems figuring out the correct setup could use this kind of device to speed up the adjusting process. This case is actually quite relevant as the increasing popularity of mountain biking means that bikes are getting cheaper and nowadays even entry level bikes have so much adjusting options that one can easily get carried away with those.
 
@@ -245,6 +251,7 @@ Figure \ref{fig:data_plots} (a) tells that on average the used suspension travel
 
 
 \subsection{Presentation/demo video}
+\label{sec:video}
 
 The video behind the link below goes trough some basic info about the device and shows how to record manually. The bike used in the video has same fork travel and rear shock stroke as the defaults of the device, so it doesn't go through changing those. Those can be changed from the settings menu, where the 'use gps option' is located.
 
@@ -253,6 +260,7 @@ The video behind the link below goes trough some basic info about the device and
 
 
 \subsection{Quick user manual}
+\label{sec:manual}
 
 \begin{figure}[H]
     \centering
@@ -284,7 +292,7 @@ Next up the user interface navigation for setup. The device doesn't have on boar
             \item Set your bike specific fork travel and rear shock stroke length. The defaults are 160 mm and 57 mm.
             \item In case you are measuring full suspension bike and didn't have the rear sensor connected when powering up the device, choose the 'Add rear sensor' and the device will detect the rear sensor. This is done automatically, if the sensor was attached before powering up the device.
             \item If you are in an area where getting GPS signal is tricky, you can disable GPS by setting the 'Use gps option' to false. Note that the automatic recording needs GPS to work so by setting this option to false, only the manual recording will work.
-            \item Change the sample rate (microSD flush rate, see programming section (end of 3.1) for more info) and running average sampling length if you want to. Defaults are 200 and 5.
+            \item Change the sample rate (microSD flush rate, see programming section (end of \ref{sec:progress}) for more info) and running average sampling length if you want to. Defaults are 200 and 5.
         \end{itemize}
 
         \item Exit from settings menu and go to calibration menu and choose 'Calibrate all'.  Follow the instructions on the OLED screen and the device guides you through the calibration process.
@@ -332,7 +340,7 @@ Figure \ref{fig:menu_screen} illustrates the layout of the device menu: The stat
 
 
 \subsection{Specs of the device as a table}
-
+\label{sec:specslist}
 
 \begin{longtable}{ |p{0.3\linewidth} | p{0.5\linewidth}|} 
     \caption{The important specifications of the device.}
@@ -375,10 +383,11 @@ Figure \ref{fig:menu_screen} illustrates the layout of the device menu: The stat
     
 
 \subsection{Conclusions}
+\label{sec:conclusions}
 
 Did the project meet its requirements? Mainly yes, as the first three requirements of the project plan section are fulfilled and the latter two work to some point. The device ended up having more features than originally planned and the data review without PC didn't get enough attention. There is one fundamental problem in the design of the data review functionality, which reduces the usefulness of it: The BLE communication is designed for small amounts of data, so the idea of sending complete files to smartphone for plotting was realized to not work. The current data review with averages and maximum values gives some feedback, but if the trail has different sections, the user can't get any specific feedback from the different sections. From this point of view the data review should be done with WiFi and it could even be done so that the microcontroller runs a web server that has its own plotting code and the user just visits the page to review the data. This would of course need different main board, for instance an ESP32 or Raspberry pi zero.
 
-The bonus requirement about the cost is a bit tricky, as the final budget of 200 euros isn't cheap, but it's still around 10\% of the cost of a commercial solution. One could probably save up to 40 euros by finding the cheapest retailers and of course it is possible to simplify the device, for instance by leaving out the GPS, and save money that way. The alternative component choices in section 5.1 considers some other components, that are either cheaper or better. On the other end, one could argue that the project is quite cheap, when looking at the price of one weatherproof linear potentiometer that could be used in this project, as it costs 330 euros (versus the used DIY string pot cost under 20 euros).
+The bonus requirement about the cost is a bit tricky, as the final budget of 200 euros isn't cheap, but it's still around 10\% of the cost of a commercial solution. One could probably save up to 40 euros by finding the cheapest retailers and of course it is possible to simplify the device, for instance by leaving out the GPS, and save money that way. The alternative component choices in section \ref{sec:alt_comps} considers some other components, that are either cheaper or better. On the other end, one could argue that the project is quite cheap, when looking at the price of one weatherproof linear potentiometer that could be used in this project, as it costs 330 euros (versus the used DIY string pot cost under 20 euros).
 
 Apart from the data review the project turned out to be working quite well and it definitely proofs that one can build a proper mountain bike suspension setup tool with basic electronics stuff. The external sensors work well and the main unit is compact enough to fit on to a bike without disturbing the rider. One small thing that is probably updated soon is that now the potentiometers are supported only by their bushings, so adding a bearing to the linear sensor would probably increase the life of the potentiometer. This update requires only a new reel for the string as the enclosure is designed to fit a 61901 bearing. Other design issue is that the ceramic patch antenna of the used GPS module is not especially fast when it comes to finding fix in urban areas, so it would have been good to choose a module with external antenna option. Of course there are a lot of small things that could be improved, for instance the efficiency of the program code and the powering solution. Now there is 5 V boost-converter and 3.3 V regulator between the board and the battery, but changing these to one 3.3 V buck/boost-converter would improve the power efficiency. These things are connected though, as the Nano can't take 3.3 V input unless you cut the solder pad of the regulator, but cutting the pad means that no new program code can be uploaded to the Nano. So this powering optimization would need a small switch on board that toggles between program mode and direct current mode.
 
@@ -387,9 +396,11 @@ The device has many features that offer easy upgrades in the future. One of thes
 
 \newpage
 \section{How to build the project and alternative part lists}
+\label{sec:building}
 \rule{12.7cm}{0.4pt}
 
 \subsection{Alternative component choices}
+\label{sec:alt_comps}
 
 The components of the project from a quite well working package and it's worth noting that the used code only works on mbed architecture boards. Another fact is that the code currently takes about 0.4 MB of program memory, so going with smaller/cheaper microcontroller means that some features will need to be discarded. When looking for GPS module, one should choose a model that has a possibility to mount an external antenna, as it will make getting the GPS fix way faster. A small side note here: The Nano 33 BLE is actually the most powerful Arduino board in terms of clock speed and memory (64 MHz and 1 MB/256 kB), if we don't count the Portenta, which is designed for the industry. These in mind there are three alternative component lists below:
 
@@ -418,10 +429,11 @@ The components of the project from a quite well working package and it's worth n
 
 
 \subsection{Light building instructions}
+\label{sec:light_build}
 
-The building process is quite simple if one has access to a 3D printer and soldering tools. If going with the same components, the component layout pictured in section 3.1 should work. In case using different components, one should first cut a 145x55 mm piece of pcb (or draw rectangle on paper and place the components on that) and test fit all the components. After making sure that the components fit, the parts need to be 3D printed according to notes described in section 5.3, note that the pause prints need some components to prepared, for instance the brake switches with wires soldered on place and the 3 mm plexigass cut to correct dimensions 147x23 mm.
+The building process is quite simple if one has access to a 3D printer and soldering tools. If going with the same components, the component layout pictured in section \ref{sec:progress} should work. In case using different components, one should first cut a 145x55 mm piece of pcb (or draw rectangle on paper and place the components on that) and test fit all the components. After making sure that the components fit, the parts need to be 3D printed according to notes described in section \ref{sec:printing}, note that the pause prints need some components to prepared, for instance the brake switches with wires soldered on place and the 3 mm plexigass cut to correct dimensions 147x23 mm.
 
-After all the parts are printed the potentiometers can be assembled by first inserting the spring to the bottom part of the cover and attaching the string to the reel and the ball at the end of the string. It is also good to make sure that the tolerance between the potentiometer shaft and the reel is sufficient. In case it is too tight, one can try to use a 6.3 mm drill bit to take off some material. When everything fits together, install the reel to the spring (with the string nearly entirely wound on to the reel) and add a bit of preload to the spring and push the potentiometer in. After this tighten the potentiometer nut and solder some 3-pole wire with enough length (max diameter 6 mm) to the potentiometer. Plus goes to 1, GND goes to 3 and signal goes to solder pad no. 2 (numbers are valid for the potentiometer pictured in section 3.1). After this, route the wire through the top cover and screw the cover in place with 2x 20 mm M3 screws. Repeat same procedure for the other potentiometer.
+After all the parts are printed the potentiometers can be assembled by first inserting the spring to the bottom part of the cover and attaching the string to the reel and the ball at the end of the string. It is also good to make sure that the tolerance between the potentiometer shaft and the reel is sufficient. In case it is too tight, one can try to use a 6.3 mm drill bit to take off some material. When everything fits together, install the reel to the spring (with the string nearly entirely wound on to the reel) and add a bit of preload to the spring and push the potentiometer in. After this tighten the potentiometer nut and solder some 3-pole wire with enough length (max diameter 6 mm) to the potentiometer. Plus goes to 1, GND goes to 3 and signal goes to solder pad no. 2 (numbers are valid for the potentiometer pictured in section \ref{sec:progress}). After this, route the wire through the top cover and screw the cover in place with 2x 20 mm M3 screws. Repeat same procedure for the other potentiometer.
 
 To finish the external sensors, take some 5-pole wire and measure it so that it reaches from the handlebar to the water bottle mount. Then solder the brake sensors and the front potentiometer to the 5-pole wire according to the schematic found at the bottom of this section. Insulate the connections with hot glue and shrinking tube. The 3-pole wire of the rear sensor is attached directly to the rear sensor connector according to the schematic, but in addition you must connect the pin 4 of the connector to GND, in order for the automatic rear sensor detection to work.
 
@@ -436,10 +448,11 @@ Figure \ref{fig:schematic} below shows the schematic of the device, note that th
     \label{fig:schematic}
 \end{figure}
 
-Note that the schematic in figure \ref{fig:schematic} applies perfectly only for the components mentioned in the components list in section 2. Especially the GPS serial wiring is opposite to standard serial, as the used module is designed to be used as a shield rather than a separate module. So in case you are using 'normal' GPS module the serial wiring should be gps(tx) → 2 (nano rx1) and gps(rx) → 1 (nano tx1).
+Note that the schematic in figure \ref{fig:schematic} applies perfectly only for the components mentioned in the components list in section \ref{sec:components}. Especially the GPS serial wiring is opposite to standard serial, as the used module is designed to be used as a shield rather than a separate module. So in case you are using 'normal' GPS module the serial wiring should be gps(tx) → 2 (nano rx1) and gps(rx) → 1 (nano tx1).
 
 
 \subsection{3D printing specifications}
+\label{sec:printing}
 
 All the parts were printed with PrusaSlicer default settings for Prusa Mini in PETG 0.2 mm speed mode: Nozzle temperature 250°c, heat bed temperature 90°c, 0.2 mm layer height, 20\% infill, rectangular infill pattern, skirt on, no brim and when using supports the detect bridging perimeters option was set on. Used nozzle was standard 0.4 mm one and the used spring steel sheet (removable build plate) was the textured one, which is recommended for PETG. Pause prints were made during slicing to prevent forgetting them. For the smaller and more detailed parts, for instance the front plate, a smaller 0.15 mm layer height might also be used. The amount of supports used is quite minimal and depending of the capabilities of the used printer the models might need more supports than mentioned in table \ref{tab:printing}. Table \ref{tab:printing} shows also some slicing notes for the 3D models.
 
